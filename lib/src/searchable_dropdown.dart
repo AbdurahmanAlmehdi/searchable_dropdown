@@ -61,8 +61,7 @@ class SearchableDropdown<T> extends StatefulWidget {
     required Future<List<SearchableDropdownMenuItem<T>>?> Function(
       int,
       String?,
-    )?
-        paginatedRequest,
+    )? paginatedRequest,
     int? requestItemCount,
     Key? key,
     SearchableDropdownController<T>? controller,
@@ -474,11 +473,11 @@ class _DropDown<T> extends StatelessWidget {
     if (dialogPositionFromBottom != null) {
       //If dialog couldn't fit the screen, reverse it
       if (dialogPositionFromBottom <= 0) {
-        isReversed = true;
-        final dropdownHeight = dropdownGlobalPointBounds?.height ?? 54;
-        dialogPositionFromBottom +=
-            alertDialogMaxHeight + dropdownHeight - dialogOffset;
-      } else {
+        // isReversed = true;
+        //   final dropdownHeight = dropdownGlobalPointBounds?.height ?? 54;
+        //   dialogPositionFromBottom +=
+        //       alertDialogMaxHeight + dropdownHeight - dialogOffset;
+        // } else {
         dialogPositionFromBottom -= dialogOffset;
       }
     }
@@ -804,10 +803,13 @@ class _DropDownListViewState<T> extends State<_DropDownListView<T>> {
     if (maxScroll - currentScroll <= sensitivity) {
       if (searchText.isNotEmpty) {
         dropdownController.getItemsWithPaginatedRequest(
-            page: dropdownController.page, key: searchText,);
+          page: dropdownController.page,
+          key: searchText,
+        );
       } else {
         dropdownController.getItemsWithPaginatedRequest(
-            page: dropdownController.page,);
+          page: dropdownController.page,
+        );
       }
     }
   }
